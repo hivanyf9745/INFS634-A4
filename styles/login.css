@@ -1,10 +1,31 @@
 :root {
   --main-yellow: #e8d2a6;
   --main-grey: #d9d9d9;
+  --main-red: #f48484;
+  --main-dark-red: #f55050;
+  --main-blue: #86a3b8;
+  --main-dark-blue: #5e7281;
+
+  --header-one: 4.6rem;
+  --text-size: 2.4rem;
+}
+
+@font-face {
+  font-family: "Sansation";
+  src: url("/INFS634-A4/fonts/Sansation_Regular.ttf") format("truetype");
+  font-weight: normal;
+
+  font-family: "Sansation Bold";
+  src: url("/INFS634-A4/fonts/Sansation_Bold.ttf") format("truetype");
+  font-weight: 700;
 }
 
 html {
   font-size: 62.5%;
+}
+
+body {
+  font-family: "PT Sans", sans-serif !important;
 }
 
 .logo-container {
@@ -28,7 +49,7 @@ html {
   height: 100vh;
 }
 
-.login-inner {
+.login-inner-container {
   background-color: var(--main-grey);
   border-radius: 2rem;
   width: 67.5rem;
@@ -39,4 +60,60 @@ html {
   left: 50%;
 
   transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.login-text {
+  font-family: "Sansation Bold";
+  font-size: var(--header-one);
+
+  margin-bottom: 6.9rem;
+}
+
+.form-container {
+  margin: 0 auto;
+  position: relative;
+}
+
+.input-form {
+  font-size: 2.4rem;
+  font-weight: 700;
+
+  margin: 2.8rem auto;
+}
+
+.form-control {
+  font-size: 2rem;
+  width: 29.6rem;
+}
+
+.btn {
+  margin-top: 3rem;
+  width: 15.2rem;
+  height: 5.9rem;
+  font-size: 2.4rem;
+  background-color: var(--main-red);
+  border-color: var(--main-red);
+
+  transform: translateX(50%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn:hover {
+  background-color: var(--main-dark-red);
+  border-color: var(--main-dark-red);
+}
+
+.register-text {
+  font-size: var(--text-size);
+  font-weight: 700;
+}
+
+.register-link {
+  color: var(--main-blue);
+}
+
+.register-link:hover {
+  color: var(--main-dark-blue);
+  transition: all 180ms ease-in-out;
 }

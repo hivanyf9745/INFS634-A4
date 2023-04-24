@@ -1,0 +1,35 @@
+:root {
+  --main-yellow: #e8d2a6;
+  --main-grey: #d9d9d9;
+  --main-red: #f48484;
+  --main-dark-red: #f55050;
+  --main-blue: #86a3b8;
+  --main-dark-blue: #5e7281;
+
+  --header-one: 4.6rem;
+  --text-size: 2.4rem;
+}
+
+@font-face {
+  font-family: "Sansation";
+  src: url("/INFS634-A4/fonts/Sansation_Regular.ttf") format("truetype");
+  font-weight: normal;
+
+  font-family: "Sansation Bold";
+  src: url("/INFS634-A4/fonts/Sansation_Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+.register-header {
+  font-size: var(--header-one);
+  font-family: "Sansation Bold";
+  font-weight: 700;
+}
+
+.register-form-container {
+  margin: 7rem auto;
+}
+
+.register-form {
+  border: solid 1px rgba(0, 0, 0, 0.3);
+}
