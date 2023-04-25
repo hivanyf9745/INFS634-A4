@@ -10,7 +10,17 @@ function createUser () {
     $email = $_POST['email'];
     $rePassword = $_POST['retype-password'];
 
-    if ($rePassword === $password) {
+    /**********/
+    //Now I need to make sure that the email do not exist in the database.
+    $readQuery = "SELECT email FROM users";
+    $existResults = mysqli_query($connection, $readQuery);
+    $emailArr = [];
+    
+    while ($row = mysqli_fetch_assoc($existResults)) {
+      array_push($emailArr, $row['email']);
+    }
+
+    if ($rePassword === $password and !in_array($email, $emailArr)) {
       $query = "INSERT INTO users(username, email, password) ";
       $query .= "VALUES('$username', '$email', '$password') ";
     
@@ -20,7 +30,30 @@ function createUser () {
         die("Query Failed!");
       }
     } else {
-      echo "<script>alert('Password did not match!')</script>";
+      echo "<script>alert('Something went wrong! Either your password did not match or the email is already taken')</script>";
+    }
+  }
+}
+
+function userLogin() {
+  if (isset($_GET['submit'])) {
+    global $connection;
+  
+    $username = $_GET['username'];
+    $password = $_GET['password'];
+  
+    $query = "SELECT id FROM users ";
+    $query .= "WHERE username = '$username' AND password = '$password';";
+  
+    $result = mysqli_query($connection, $query);
+  
+    if (!$result) {
+      echo "<script>alert('Something went wrong: Either your password or your username is incorrect')</script>";
+    }
+  
+    while ($row = mysqli_fetch_assoc($result)) {
+      $id = $row['id'];
+      header("Location: projects.php?userId=$id");
     }
   }
 }

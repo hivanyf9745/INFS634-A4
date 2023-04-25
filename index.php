@@ -1,5 +1,11 @@
 <?php include "helpers/db.php"; ?>
-
+<?php include "helpers/functions.php"; ?>
+<?php userLogin(); ?>
+<?php 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+?>
 
 <?php include "includes/header.php"; ?>
   <title>PACE | Your Workflow Management System</title>
@@ -13,7 +19,7 @@
       <div class="container login-inner-container p-5">
         <h1 class="login-text">Log In</h1>
 
-        <form action="login.php" method="get" class="form-container w-75">
+        <form action="index.php" method="get" class="form-container w-75">
           <div class="form-group d-flex align-items-center justify-content-between input-form">
             <label for="usernname">Username: </label>
             <input type="text" class="form-control" id="username" name="username"/>
