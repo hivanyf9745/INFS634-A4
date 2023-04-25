@@ -12,7 +12,7 @@ function createUser () {
 
     /**********/
     //Now I need to make sure that the email do not exist in the database.
-    $readQuery = "SELECT email FROM users";
+    $readQuery = "SELECT email FROM users;";
     $existResults = mysqli_query($connection, $readQuery);
     $emailArr = [];
     
@@ -28,9 +28,19 @@ function createUser () {
     
       if (!$result) {
         die("Query Failed!");
-      }
+      } 
     } else {
       echo "<script>alert('Something went wrong! Either your password did not match or the email is already taken')</script>";
+    }
+
+    $redirectQuery = "SELECT id FROM users ";
+    $redirectQuery .= "WHERE username = '$username' AND password = '$password';";
+
+    $redirectedResult = mysqli_query($connection, $redirectQuery);
+
+    while($row = mysqli_fetch_assoc($redirectedResult)) {
+      $redirectedId = $row['id'];
+      header("Location: projects.php?userId=$redirectedId");
     }
   }
 }
