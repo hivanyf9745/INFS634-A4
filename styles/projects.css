@@ -1,0 +1,264 @@
+:root {
+  --main-yellow: #e8d2a6;
+  --main-light-yellow: #f4e9d3;
+  --main-dark-yellow: #d1bd95;
+  --main-grey: #d9d9d9;
+  --main-red: #f48484;
+  --main-dark-red: #f55050;
+  --main-blue: #86a3b8;
+  --main-ligth-blue: #e7edf1;
+  --main-dark-blue: #5e7281;
+  --text-color: #3c2a21;
+  --default-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  --header-one: 4.6rem;
+  --text-size: 2.4rem;
+  --font-size: 1.6rem;
+}
+
+.all-detail-container {
+  height: 85vh;
+}
+
+.progress-container {
+  width: 26.5rem;
+  height: 24.5rem;
+
+  background-color: var(--main-yellow);
+  border-radius: 2rem;
+
+  position: relative;
+}
+
+.progress-active {
+  background-color: var(--main-dark-yellow) !important;
+  box-shadow: var(--default-box-shadow);
+}
+
+.project-name {
+  font-size: var(--text-size);
+  color: var(--text-color);
+  font-weight: 700;
+
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+}
+
+.progress {
+  width: 15rem;
+  height: 15rem !important;
+  float: left;
+  line-height: 15rem;
+  background: none;
+  margin: 2rem;
+  box-shadow: none;
+  position: relative;
+}
+
+.progress:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.2rem solid var(--main-ligth-blue);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress > span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 1.2rem;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 8rem;
+  border-bottom-right-radius: 8rem;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 8rem;
+  border-bottom-left-radius: 8rem;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+  /* animation: loading-1 1.8s linear forwards; */
+  /* transform: rotate(180deg); */
+}
+
+.progress .progress-value {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: none;
+  font-size: 2.4rem;
+  color: var(--text-color);
+  line-height: 13.5rem;
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.progress.blueone .progress-bar {
+  border-color: var(--main-dark-blue);
+}
+
+/* .progress.blueone .progress-left .progress-bar {
+  animation: loading-2 1.5s linear forwards 1.8s;
+} */
+
+.progress.bluetwo .progress-bar {
+  border-color: var(--main-dark-blue);
+}
+
+/* .progress.bluetwo .progress-left .progress-bar {
+  animation: loading-3 1.5s linear forwards 1.8s;
+} */
+
+.progress.bluethree .progress-bar {
+  border-color: var(--main-dark-blue);
+}
+
+/* .progress.bluethree .progress-left .progress-bar {
+  animation: loading-4 1.5s linear forwards 1.8s;
+} */
+
+@keyframes loading-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+@keyframes loading-2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(101deg);
+    transform: rotate(101deg);
+  }
+}
+@keyframes loading-3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(102deg);
+    transform: rotate(102deg);
+  }
+}
+@keyframes loading-4 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+.project-due {
+  font-size: var(--font-size);
+  color: var(--text-color);
+
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+}
+
+.more-projects {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+.more-projects:hover {
+  color: var(--main-dark-blue);
+  text-decoration: none !important;
+
+  transition: all 180ms ease-in-out;
+}
+
+.project-outer-container {
+  width: 100%;
+  height: 42.6rem;
+  border-radius: 2rem;
+
+  background-color: var(--main-light-yellow);
+  box-shadow: var(--default-box-shadow);
+}
+
+.border-start {
+  border-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.border-end {
+  border-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.project-completion {
+  position: relative;
+}
+
+.project-detail-header {
+  color: var(--text-color);
+  font-size: var(--text-size);
+  font-weight: 700;
+}
+
+.col-status {
+  transform: translate(0, -100%) !important;
+}
+
+.phase-container {
+  width: 90%;
+  height: 70%;
+
+  background-color: var(--main-ligth-blue);
+  position: relative;
+}
+
+.list-group {
+  justify-content: between !important;
+  background-color: none !important;
+}
+
+.due-date-container {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

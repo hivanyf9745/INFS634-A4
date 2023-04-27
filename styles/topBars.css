@@ -1,0 +1,38 @@
+:root {
+  --main-yellow: #e8d2a6;
+  --main-dark-yellow: #d1bd95;
+  --main-grey: #d9d9d9;
+  --main-red: #f48484;
+  --main-dark-red: #f55050;
+  --main-blue: #86a3b8;
+  --main-dark-blue: #5e7281;
+  --text-color: #3c2a21;
+
+  --header-one: 4.6rem;
+  --text-size: 2.4rem;
+  --font-size: 1.6rem;
+}
+
+.top-bar-container {
+  height: 11.5rem;
+  background-color: var(--main-dark-yellow);
+}
+
+.new-projects {
+  background-color: var(--main-dark-red);
+  border-color: var(--main-dark-red);
+
+  width: 19.2rem;
+  height: 4.6rem;
+  font-size: var(--font-size);
+}
+
+.new-projects:hover {
+  background-color: var(--main-red);
+  border-color: var(--main-red);
+}
+
+.new-project:active {
+  background-color: var(--main-blue) !important;
+  border-color: var(--main-blue) !important;
+}

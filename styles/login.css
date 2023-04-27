@@ -87,7 +87,7 @@ body {
   width: 29.6rem;
 }
 
-.btn {
+.btn-login {
   margin-top: 3rem;
   width: 15.2rem;
   height: 5.9rem;
@@ -99,7 +99,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.btn:hover {
+.btn-login:hover {
   background-color: var(--main-dark-red);
   border-color: var(--main-dark-red);
 }

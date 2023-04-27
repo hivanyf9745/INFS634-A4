@@ -29,7 +29,7 @@ error_reporting(E_ALL);
             <input type="password" class="form-control" id="password" name="password" />
           </div>
           <div class="d-flex justify-content-end align-items-center">
-            <input type="submit" class="btn btn-primary" value="Log In" name="submit">
+            <input type="submit" class="btn btn-primary btn-login" value="Log In" name="submit">
           </div>
           <hr class="my-5"/>
         </form>

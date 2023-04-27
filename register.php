@@ -38,8 +38,12 @@ error_reporting(E_ALL);
             <label for="retype-password">Re-type password: </label>
             <input type="password" class="form-control register-form" id="retype-password" name="retype-password" />
         </div>
+        <div class="form-group d-flex align-items-center justify-content-between input-form">
+            <label for="groupname">Group Name: </label>
+            <input type="text" class="form-control register-form" id="groupname" name="groupname" />
+        </div>
         <div class="d-flex justify-content-end align-items-center">
-            <input type="submit" class="btn btn-primary" value="Sign In" name="submit">
+            <input type="submit" class="btn btn-primary btn-login" value="Sign In" name="submit">
         </div>
       </form>
     </div>

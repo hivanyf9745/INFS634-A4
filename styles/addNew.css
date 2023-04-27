@@ -1,0 +1,112 @@
+:root {
+  --main-yellow: #e8d2a6;
+  --main-dark-yellow: #d1bd95;
+  --main-grey: #d9d9d9;
+  --main-red: #f48484;
+  --main-dark-red: #f55050;
+  --main-blue: #86a3b8;
+  --main-dark-blue: #5e7281;
+  --text-color: #3c2a21;
+
+  --header-one: 4.6rem;
+  --text-size: 2.4rem;
+  --font-size: 1.6rem;
+}
+
+.main-right {
+  height: 100vh;
+}
+
+.add-container {
+  height: 85%;
+}
+
+.addNew-header {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.add-new-form-container {
+  width: 60%;
+}
+
+.project-name-container {
+  margin-bottom: 5rem;
+}
+
+.project-text {
+  font-size: 2.2rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.add-form {
+  position: relative;
+}
+
+.add-input {
+  width: 50%;
+}
+
+.project-date-container {
+  margin-bottom: 2rem;
+}
+
+.project-phases {
+  color: var(--text-color);
+  font-size: 2.2rem;
+  font-weight: 700;
+
+  margin-top: 5rem;
+}
+
+.project-phases-container {
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.add-phase-input {
+  width: 30%;
+}
+
+.btn-add {
+  color: #fff;
+}
+
+.add-new-phase {
+  font-size: 2.4rem;
+  width: 75%;
+
+  background-color: var(--main-blue);
+  border-color: var(--main-blue);
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.add-submit {
+  position: absolute;
+
+  right: -20%;
+  bottom: -30%;
+
+  background-color: var(--main-dark-red);
+  border-color: var(--main-dark-red);
+
+  width: 19.2rem;
+  height: 4.6rem;
+  font-size: var(--font-size);
+}
+
+.add-submit:hover {
+  background-color: var(--main-red);
+  border-color: var(--main-red);
+
+  transition: all 180ms ease-in-out;
+}
+
+.add-submit:active {
+  background-color: var(--main-red);
+  border-color: var(--main-red);
+
+  transition: all 180ms ease-in-out;
+}
