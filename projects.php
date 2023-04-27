@@ -21,6 +21,7 @@ $getProjectInfoQuery .= "WHERE group_id = '$groupId'";
 
 $projects = mysqli_query($connection, $getProjectInfoQuery);
 $completions = [];
+$startsArr = [];
 $duesArr = [];
 $projectIdArr = [];
 
@@ -29,6 +30,7 @@ while ($row = mysqli_fetch_assoc($projects)) {
   $projectId = $row['id'];
   $projectName = $row['name'];
   $projectDays = $row['days'];
+  $projectStartDate = $row['start_date'];
   $projectEndDate = $row['end_date'];
 
   $currentDate = date("Y-m-d");
@@ -38,17 +40,17 @@ while ($row = mysqli_fetch_assoc($projects)) {
 
   if ($dateDiff <= 0) {
     $completions[$projectName] = '100';
+    $startsArr[$projectName] = $projectStartDate;
     $duesArr[$projectName] = $projectEndDate;
     $projectIdArr[$projectName] = $projectId;
   } else {
     $completePercent = ($projectDays - $dateDiff) / $projectDays * 100;
     $completions[$projectName] = round($completePercent);
+    $startsArr[$projectName] = $projectStartDate;
     $duesArr[$projectName] = $projectEndDate;
     $projectIdArr[$projectName] = $projectId;
   }
 }
-
-// print_r($completions);
 ?>
 
 <?php include "includes/header.php"; ?>
@@ -310,16 +312,22 @@ while ($row = mysqli_fetch_assoc($projects)) {
             $projectId = '';
             $completion = '';
             $projectName = '';
+            $projectStart = '';
+            $projectEnd ='';
   
             if (!in_array('projectId', $getKeys)) {
               $completionKeys = array_keys($completions);
               $projectId = $projectIdArr[$completionKeys[0]];
               $completion = $completions[$completionKeys[0]];
               $projectName = $completionKeys[0];
+              $projectStart = $startsArr[$projectName];
+              $projectEnd = $duesArr[$projectName];
             } else {
               $projectId = $_GET['projectId'];
               $projectName = array_search($projectId, $projectIdArr);
               $completion = $completions[$projectName];
+              $projectStart = $startsArr[$projectName];
+              $projectEnd = $duesArr[$projectName];
             }
 
             $getPhaseQuery = "SELECT description, due_date FROM phases ";
@@ -375,7 +383,7 @@ while ($row = mysqli_fetch_assoc($projects)) {
             Completion: <?php echo $completion."%"; ?>
           </h3>
             </div>
-            <div class="col-6 h-100">
+            <div class="col-6 h-100 phase-outer-container">
               <div class="phase-container mx-auto overflow-scroll d-flex flex-column">
                 <?php 
                 if (count($phaseDescriptionArr) === 0) {
@@ -386,18 +394,56 @@ while ($row = mysqli_fetch_assoc($projects)) {
 
                     $dueDate = $phaseDueArr[$dueIdx];
 
-                    echo "
-                      <div class='w-100 d-flex justify-content-around due-date-container'>
-                        <h3 class='mb-1'>$dueDate</h3>
-                        <h4>$value</h4>
+                    $currentDate = date("Y-m-d");
+
+                    $dateDiff = strtotime($dueDate) - strtotime($currentDate);
+                    $dateDiff = round($dateDiff / (60 * 60 * 24));
+
+                    if ($dateDiff <= 0) {
+                      echo "
+                      <div class='w-100 d-flex justify-content-between due-date-container px-5'>
+                        <h3 class='mb-1 phase-due-date opacity-50'>$dueDate</h3>
+                        <h4 class='phase-description opacity-50 w-50'>$value</h4>
                       </div>
                     ";
+                    } else {
+                      echo "
+                      <div class='w-100 d-flex justify-content-between due-date-container px-5'>
+                        <h3 class='mb-1 phase-due-date'>$dueDate</h3>
+                        <h4 class='phase-description w-50'>$value</h4>
+                      </div>
+                    ";
+                    }
                   }
                 }
                 ?>
               </div>
+              <h3 class="text-center col-status-timeline">Timeline: <?php echo $projectStart; ?> to <?php echo $projectEnd; ?></h3>
             </div>
-            <div class="col-3 h-100 border-start"></div>
+            <div class="col-3 h-100 border-start task-outer-container">
+              <?php 
+              $tasksQuery = "SELECT description FROM tasks ";
+              $tasksQuery .= "WHERE project_Id = '$projectId'";
+
+              $tasksResults = mysqli_query($connection, $tasksQuery);
+              $taskDescriptionArr = [];
+
+
+              while ($row = mysqli_fetch_assoc($tasksResults)) {
+                array_push($taskDescriptionArr, $row['description']);
+              }
+
+              if (count($taskDescriptionArr) === 0) {
+                echo "
+                <div class='w-100 text-center task-none px-3 mt-5'>You don't have any tasks presented yet</div>
+                ";
+              }
+              ?>
+
+              <h3 class="text-center col-status-task">
+                Tasks
+              </h3>
+            </div>
   
           </div>
         </div>

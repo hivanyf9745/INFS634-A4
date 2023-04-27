@@ -110,8 +110,6 @@
   border-right: 0;
   -webkit-transform-origin: center right;
   transform-origin: center right;
-  /* animation: loading-1 1.8s linear forwards; */
-  /* transform: rotate(180deg); */
 }
 
 .progress .progress-value {
@@ -132,65 +130,12 @@
   border-color: var(--main-dark-blue);
 }
 
-/* .progress.blueone .progress-left .progress-bar {
-  animation: loading-2 1.5s linear forwards 1.8s;
-} */
-
 .progress.bluetwo .progress-bar {
   border-color: var(--main-dark-blue);
 }
 
-/* .progress.bluetwo .progress-left .progress-bar {
-  animation: loading-3 1.5s linear forwards 1.8s;
-} */
-
 .progress.bluethree .progress-bar {
   border-color: var(--main-dark-blue);
-}
-
-/* .progress.bluethree .progress-left .progress-bar {
-  animation: loading-4 1.5s linear forwards 1.8s;
-} */
-
-@keyframes loading-1 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-}
-@keyframes loading-2 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(101deg);
-    transform: rotate(101deg);
-  }
-}
-@keyframes loading-3 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(102deg);
-    transform: rotate(102deg);
-  }
-}
-@keyframes loading-4 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
 }
 
 .project-due {
@@ -261,4 +206,45 @@
 .due-date-container {
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+.phase-due-date {
+  color: var(--text-color);
+}
+
+.phase-description {
+  color: var(--text-color);
+}
+
+.phase-outer-container {
+  position: relative;
+}
+
+.col-status-timeline {
+  position: absolute;
+  width: 100%;
+
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.task-outer-container {
+  position: relative;
+}
+
+.task-none {
+  font-size: var(--text-size);
+  color: var(--main-red);
+  font-weight: 700;
+}
+
+.col-status-task {
+  position: absolute;
+
+  width: 100%;
+
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
