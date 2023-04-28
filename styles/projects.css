@@ -130,13 +130,13 @@
   border-color: var(--main-dark-blue);
 }
 
-.progress.bluetwo .progress-bar {
+/* .progress.bluetwo .progress-bar {
   border-color: var(--main-dark-blue);
 }
 
 .progress.bluethree .progress-bar {
   border-color: var(--main-dark-blue);
-}
+} */
 
 .project-due {
   font-size: var(--font-size);
