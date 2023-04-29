@@ -1,0 +1,82 @@
+:root {
+  --main-yellow: #e8d2a6;
+  --main-light-yellow: #f4e9d3;
+  --main-dark-yellow: #d1bd95;
+  --main-grey: #d9d9d9;
+  --main-red: #f48484;
+  --main-dark-red: #f55050;
+  --main-blue: #86a3b8;
+  --main-ligth-blue: #e7edf1;
+  --main-dark-blue: #5e7281;
+  --text-color: #3c2a21;
+  --default-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  --header-one: 4.6rem;
+  --text-size: 2.4rem;
+  --font-size: 1.6rem;
+}
+
+.account-header {
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.account-outer-container {
+  width: 60%;
+}
+
+.account-container {
+  position: relative;
+}
+
+.account-username-label {
+  font-size: var(--text-size);
+  color: var(--text-color);
+}
+
+.account-username {
+  font-size: var(--text-size);
+  color: var(--text-color);
+}
+
+.dropdown {
+  font-size: var(--text-size);
+  color: var(--text-color);
+}
+
+.btn-beige {
+  background-color: var(--main-light-yellow) !important;
+  border-color: var(--main-light-yellow) !important;
+
+  font-size: var(--text-size);
+  color: var(--text-color);
+
+  width: 28.5rem;
+  height: 4rem;
+}
+
+.dropdown-item {
+  color: var(--text-color) !important;
+
+  font-size: var(--text-size) !important;
+}
+
+.log-out-container {
+  margin-top: 7rem;
+}
+
+.btn-logout {
+  background-color: var(--main-dark-red);
+  border-color: var(--main-dark-red);
+  font-size: var(--text-size);
+
+  width: 17.1rem;
+  height: 5.1rem;
+}
+
+.btn-logout:hover {
+  background-color: var(--main-red);
+  border-color: var(--main-red);
+
+  transition: all 180ms ease-in-out;
+}

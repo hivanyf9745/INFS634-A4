@@ -47,7 +47,7 @@ $taskDescriptionsArr = [];
           global $connection, $groupId;
 
           $getProjectInfoQuery = "SELECT id, name, DATEDIFF(end_date, start_date) as days, end_date, start_date FROM projects ";
-          $getProjectInfoQuery .= "WHERE group_id = '$groupId'";
+          $getProjectInfoQuery .= "WHERE group_id = '$groupId';";
 
           $projects = mysqli_query($connection, $getProjectInfoQuery);
 

@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="/INFS634-A4/styles/topBars.css" />
   <link rel="stylesheet" href="/INFS634-A4/styles/addNew.css" />
   <link rel="stylesheet" href="/INFS634-A4/styles/projects.css" />
+  <link rel="stylesheet" href="/INFS634-A4/styles/account.css" />
+  <link rel="stylesheet" href="/INFS634-A4/styles/today.css" />
 
   <!-- Google fonts PT Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
