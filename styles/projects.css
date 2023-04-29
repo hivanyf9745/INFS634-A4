@@ -248,3 +248,15 @@
   left: 50%;
   transform: translate(-50%, 0);
 }
+
+.more-projects-container {
+  position: absolute;
+  right: 2rem;
+
+  width: 25%;
+}
+
+.more-projects-outer-container {
+  position: relative;
+  height: 5rem;
+}

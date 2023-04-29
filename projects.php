@@ -32,6 +32,8 @@ $projectEnd ='';
 
 $taskDescriptionsArr = [];
 $taskCheckedStatusArr = [];
+
+$getKeys = array_keys($_GET);
 ?>
 
 <?php include "includes/header.php"; ?>
@@ -234,9 +236,38 @@ $taskCheckedStatusArr = [];
 
         <?php 
         if ($haveProjects === 'true') {
+
+          if (!in_array('projectId', $getKeys)) {
+            $projectId = $testArr[0];
+            $projectName = array_search($projectId, $projectIdsArr);
+          } else {
+            $projectId = $_GET['projectId'];
+            $projectName = array_search($projectId, $projectIdsArr);
+          }
+
+          $projectNameDropdown = "";
+
+          foreach($projectIdsArr as $key => $value) {
+            $projectNameDropdown .= "
+            <li>
+              <a class='dropdown-item' href='projects.php?userId=$userId&username=$username&groupId=$groupId&projectId=$value'>
+                $key
+              </a>
+            </li>
+            ";
+          }
+
           echo "
-            <div class='w-100 text-end mt-5'>
-              <a href='#'><h3 class='more-projects'>More projects</h3></a>
+            <div class='w-100 mt-5 more-projects-outer-container'>
+              <div class='dropdown me-5 more-projects-container'>
+                <a href='#' class='btn btn-secondary btn-beige dropdown-toggle d-flex justify-content-center align-items-center' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                  More Projects
+                </a>
+
+                <ul class='dropdown-menu'>
+                  $projectNameDropdown;
+                </ul>
+              </div>
             </div>
           ";
         } elseif ($haveProjects === "false") {

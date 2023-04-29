@@ -146,7 +146,7 @@ if(isset($_POST['task-submit'])) {
               if (count($taskIdsArr) !== 0 and count($tasksUnchecked) !== 0) {
                 global $connection;
                 foreach($tasksUnchecked as $value) {
-                  $projectId = $_GET['projectId'];
+                  // $projectId = $_GET['projectId'];
 
                   $taskDescriptionValue = $value;
 

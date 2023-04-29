@@ -16,14 +16,6 @@
     </div>
     <div class="w-100 nav-option">
       <a
-        href="analyze.php?userId=<?php echo $userId; ?>&username=<?php echo $username; ?>&groupId=<?php echo $groupId; ?>"
-        class="d-flex w-50 mx-auto justify-content-between align-items-center">
-        <i class="bi bi-pie-chart-fill"></i>
-        <h2 class="nav-text">Analyze</h2>
-      </a>
-    </div>
-    <div class="w-100 nav-option">
-      <a
         href="today.php?userId=<?php echo $userId; ?>&username=<?php echo $username; ?>&groupId=<?php echo $groupId; ?>"
         class="d-flex w-50 mx-auto justify-content-between align-items-center">
         <i class="bi bi-calendar-check-fill"></i>
