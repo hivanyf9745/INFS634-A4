@@ -12,6 +12,8 @@ $userId = $_GET['userId'];
 $username = $_GET['username'];
 $groupId = $_GET['groupId'];
 
+$currentDate = date("Y-m-d");
+
 $haveProjects = "";
 $testArr = [];
 $completionPercentage = [];
@@ -29,6 +31,7 @@ $projectStart = '';
 $projectEnd ='';
 
 $taskDescriptionsArr = [];
+$taskCheckedStatusArr = [];
 ?>
 
 <?php include "includes/header.php"; ?>
@@ -310,7 +313,7 @@ $taskDescriptionsArr = [];
               $currentDate = date("Y-m-d");
 
               $dateDiff = strtotime($dueDate) - strtotime($currentDate);
-              $dateDiff = round($dateDiff / (60 * 60 *24));
+              $dateDiff = round($dateDiff / (60 * 60 * 24));
 
               if ($dateDiff <= 0) {
                 $phaseCol = $phaseCol . "
@@ -332,8 +335,8 @@ $taskDescriptionsArr = [];
 
           /************/
           // Enter the tasks query to retrieve tasks data
-          $tasksQuery = "SELECT description FROM tasks ";
-          $tasksQuery .= "WHERE project_Id = '$projectId';";
+          $tasksQuery = "SELECT description, checked FROM tasks ";
+          $tasksQuery .= "WHERE project_Id = '$projectId' AND today_date = '$currentDate';";
 
           $tasksResults = mysqli_query($connection, $tasksQuery);
 
@@ -341,10 +344,36 @@ $taskDescriptionsArr = [];
 
           while ($row = mysqli_fetch_assoc($tasksResults)) {
             array_push($taskDescriptionsArr, $row['description']);
+            array_push($taskCheckedStatusArr, $row['checked']);
           }
 
           if(count($taskDescriptionsArr) === 0) {
             $tasksCol = "<div class='w-100 text-center task-none px-3 mt-5'>You don't have any tasks presented yet</div>";
+          } else {
+            foreach($taskDescriptionsArr as $value) {
+              $idx = array_search($value, $taskDescriptionsArr);
+              $taskCheckedStatus = $taskCheckedStatusArr[$idx];
+
+              if ($taskCheckedStatus === '0'){
+                $tasksCol .= "
+                <li class='d-flex justify-content-around align-items-center w-100'>
+                  <h4 class='d-flex justify-content-between align-items-center w-100'>
+                    <span><i class='bi bi-circle'></i></span>
+                    $value
+                  </h4>
+                </li>
+                ";
+              } elseif ($taskCheckedStatus === '1') {
+                $tasksCol .= "
+                <li class='d-flex justify-content-around align-items-center w-100 mb-3'>
+                  <h4 class='opacity-50 d-flex justify-content-between align-items-center w-100'>
+                    <span><i class='bi bi-check-circle-fill'></i></span>
+                    $value
+                  </h4>
+                </li>
+                ";
+              }
+            }
           }
 
           echo "
@@ -373,7 +402,9 @@ $taskDescriptionsArr = [];
                   <h3 class='text-center col-status-timeline'>Timeline: $projectStart to $projectEnd</h3>
                 </div>
                 <div class='col-3 h-100 border-start task-outer-container'>
-                  $tasksCol
+                  <ul class='list-unstyled w-100 overflow-scroll h-75 px-4'>
+                    $tasksCol
+                  </ul>
                   <h3 class='text-center col-status-task'>Tasks</h3>
                 </div>
               </div>

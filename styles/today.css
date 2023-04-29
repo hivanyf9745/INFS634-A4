@@ -16,6 +16,14 @@
   --font-size: 1.6rem;
 }
 
+p {
+  color: var(--text-color);
+}
+
+h4 {
+  color: var(--text-color);
+}
+
 .tasks-outer-container {
   margin-top: 4rem;
 }
@@ -110,4 +118,9 @@
 .bi-check-square-fill {
   font-size: var(--text-size);
   color: var(--main-red);
+}
+
+.project-name-task {
+  font-weight: 700;
+  color: var(--text-color);
 }

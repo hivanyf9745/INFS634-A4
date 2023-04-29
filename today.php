@@ -216,7 +216,7 @@ if(isset($_POST['task-submit'])) {
           <div class="p-5 h-100 w-100">
             <div class="w-100 project-task-flex-container d-flex justify-content-center align-items-start p-4">
               <div class="col-6 h-100 p-3 overflow-scroll border-end">
-                <ul class="list-unstyled border-start d-flex flex-column justify-cotent-around align-items-start">
+                <ul class="list-unstyled border-start d-flex flex-column justify-cotent-around align-items-start w-100">
                   <!-- We need to list out the phases in projectId -->
                   <?php 
                   global $connection;
@@ -225,15 +225,52 @@ if(isset($_POST['task-submit'])) {
 
                   $phaseInfo = mysqli_query($connection, $getPhasesInfoQuery);
                   $phaseIdsArr = [];
+                  $phaseDueDatesArr = [];
+                  $phaseDescriptionsArr = [];
 
                   while ($row = mysqli_fetch_assoc($phaseInfo)) {
                     array_push($phaseIdsArr, $row['id']);
+                    array_push($phaseDueDatesArr, $row['due_date']);
+                    array_push($phaseDescriptionsArr, $row['description']);
                   }
 
                   if (count($phaseIdsArr) === 0) {
                     echo "
                     <li class='w-100 phase-list-item text-center'>You don't have any phases</li>
                     ";
+                  } else {
+                    foreach($phaseIdsArr as $value) {
+                      $idx = array_search($value, $phaseIdsArr);
+                      $specificDes = $phaseDescriptionsArr[$idx];
+                      $specificDate = $phaseDueDatesArr[$idx];
+                      $projectName = $projectIdsNamesArr[$projectId];
+
+                      $dateDiff = strtotime($specificDate) - strtotime($currentDate);
+                      $dateDiff = round($dateDiff / (60 * 24 * 24));
+
+                      if ($dateDiff <= 0) {
+                        echo "
+                        <li class='d-flex justify-content-around align-items-center w-100 mb-5'>
+                          <div class='date-projectName'>
+                            <h3 class='project-name-task text-center opacity-50'>$specificDate</h3>
+                            <p class='opacity-50'>$projectName</p>
+                          </div>
+                          <h4 class='opacity-50'>$specificDes</h4>
+                        </li>
+                        ";
+                      } else {
+                        echo "
+                        <li class='d-flex justify-content-around align-items-center w-100 mb-5'>
+                          <div class='date-projectName'>
+                            <h3 class='project-name-task text-center'>$specificDate</h3>
+                            <p>$projectName</p>
+                          </div>
+                          <h4>$specificDes</h4>
+                        </li>
+                        ";
+                      }
+
+                    }
                   }
                   ?>
                 </ul>
